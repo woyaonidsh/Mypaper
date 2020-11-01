@@ -1,4 +1,4 @@
-**Minimize Exposure Bias of Seq2Seq Models in Joint Entity and Relation Extraction** ———— Ranran Haoran Zhang1, Qianying Liu2, Aysa Xuemo Fan1, Heng Ji1, Daojian Zeng4,Fei Cheng2, Daisuke Kawahara3 and Sadao Kurohashi2[paper](https://arxiv.org/pdf/2009.07503.pdf)  
+**Minimize Exposure Bias of Seq2Seq Models in Joint Entity and Relation Extraction** ———— Ranran Haoran Zhang1, Qianying Liu2, Aysa Xuemo Fan1, Heng Ji1, Daojian Zeng4,Fei Cheng2, Daisuke Kawahara3 and Sadao Kurohashi2&nbsp;[[paper]](https://arxiv.org/pdf/2009.07503.pdf)  
 
 ### Introduction  
 &nbsp;&nbsp;&nbsp;&nbsp;作者首先分析以前的pipeline的方式存在的缺陷：1.忽略了实体与关系存在的内部联系&nbsp;2.会造成错误传递的问题（例如：实体预测出错，那后面的关系分类肯定出错），接着作者指出现有的Seq2Seq models会引入exposure bias problem造成模型的结果不好，所谓exposure bias problem也就是训练集与测试集decode的过程不同所导致（例如：在训练时decoder部分会有gold-standard labels来预测，而测试时模型当前预测是基于模型前一个预测的结果，而一旦前面预测出错也会导致模型接下来预测出错），基于此问题也容易导致训练模型时的过拟合问题，这会导致在预测过程中模型会忽略一些三元组，再者，因为有gold-standard labels的存在，在训练时会有一个固定的顺序（例如：都是h-r-t），但是其他的顺序也是正确的（例如：h-r-t和t-r-h都正确），而此顺序会对模型的表现有害。  
